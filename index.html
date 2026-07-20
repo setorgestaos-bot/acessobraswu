@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Braswu | Planeta Comércio, Importação e Exportação</title>
+    <!-- Fontes e Ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f2027;
+            --secondary: #203a43;
+            --accent: #d4af37;
+            --text-dark: #1f2937;
+            --text-light: #f9fafb;
+            --bg-light: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            color: --text-dark;
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: var(--primary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 32, 39, 0.85), rgba(32, 58, 67, 0.9)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #f1c40f;
+            transform: translateY(-2px);
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            margin: 0.5rem auto 0;
+        }
+
+        /* Serviços */
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-top-color: var(--accent);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        /* Sobre / Dados da Empresa */
+        .about-section {
+            background-color: var(--bg-light);
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-box {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .info-box h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table td {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 0.95rem;
+        }
+
+        .info-table td:first-child {
+            font-weight: 600;
+            color: #4b5563;
+            width: 40%;
+        }
+
+        .info-table td:last-child {
+            color: var(--text-dark);
+        }
+
+        /* Contato & Localização */
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-top: 0.2rem;
+        }
+
+        .contact-item p {
+            font-size: 1rem;
+            color: #4b5563;
+        }
+
+        .contact-item a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--primary);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Em um projeto real aqui iria um menu mobile */
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">BRAS<span>WU</span></div>
+            <nav class="nav-links">
+                <a href="#servicos">Serviços</a>
+                <a href="#institucional">Institucional</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Planeta Comércio, Importação e Exportação</h1>
+            <p>Conectando mercados globais com solidez, inteligência logística e eficiência aduaneira há mais de uma década.</p>
+            <a href="#contato" class="btn">Fale com Nossos Especialistas</a>
+        </div>
+    </section>
+
+    <!-- Serviços Principais (Adicionado para dar tom corporativo à empresa) -->
+    <section id="servicos">
+        <h2 class="section-title">Nossos Principais Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-ship"></i></div>
+                <h3>Importação Empresarial</h3>
+                <p>Gerenciamento completo da cadeia de suprimentos internacional, desde a busca de fornecedores homologados até o desembaraço no destino final.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-plane-departure"></i></div>
+                <h3>Exportação Global</h3>
+                <p>Introdução de produtos no mercado internacional com total adequação às normas alfandegárias vigentes e otimização logística.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3>Assessoria Aduaneira</h3>
+                <p>Consultoria especializada em classificação fiscal de mercadorias, análise de acordos internacionais e emissão de licenças (Radar/Siscomex).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Institucional / Dados de Registro -->
+    <section id="institucional" class="about-section">
+        <h2 class="section-title">Informações Corporativas</h2>
+        <div class="info-container">
+            
+            <!-- Box 1: Identificação -->
+            <div class="info-box">
+                <h3><i class="fa-solid fa-id-card"></i> Identificação Jurídica</h3>
+                <table class="info-table">
+                    <tr>
+                        <td>Razão Social:</td>
+                        <td>Planeta Comercio, Importacao e Exportacao LTDA</td>
+                    </tr>
+                    <tr>
+                        <td>Nome Fantasia:</td>
+                        <td>Braswu</td>
+                    </tr>
+                    <tr>
+                        <td>CNPJ:</td>
+                        <td>01.882.767/0003-16</td>
+                    </tr>
+                    <tr>
+                        <td>Inscrição Estadual:</td>
+                        <td>143.971.268.110 (SP)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Box 2: Aspectos Fiscais -->
+            <div class="info-box">
+                <h3><i class="fa-solid fa-chart-line"></i> Solidez e Estrutura</h3>
+                <table class="info-table">
+                    <tr>
+                        <td>Fundação:</td>
+                        <td>26/09/2014 (+11 anos de atuação)</td>
+                    </tr>
+                    <tr>
+                        <td>Capital Social:</td>
+                        <td>R$ 300.000,00</td>
+                    </tr>
+                    <tr>
+                        <td>Natureza Jurídica:</td>
+                        <td>Sociedade Empresária Limitada</td>
+                    </tr>
+                    <tr>
+                        <td>Tipo de Operação:</td>
+                        <td>Filial (Situação Cadastral: Ativa)</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contato e Localização -->
+    <section id="contato">
+        <h2 class="section-title">Fale Conosco</h2>
+        <div class="contact-container">
+            
+            <div class="contact-details">
+                <h3>Canais de Atendimento</h3>
+                
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <p><strong>Telefone Comercial:</strong></p>
+                        <p><a href="tel:1133662200">(11) 3366-2200</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <p><strong>E-mail:</strong></p>
+                        <p><a href="mailto:wilson@braswu.com.br">wilson@braswu.com.br</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <p><strong>Endereço / Correspondência:</strong></p>
+                        <p>Rua Joao Antonio de Oliveira, 477<br>Bairro Mooca | CEP 03111-010<br>São Paulo - SP</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box de Transparência Institucional -->
+            <div class="info-box" style="border: 1px solid #e5e7eb; background: #fafafa;">
+                <h3><i class="fa-solid fa-shield-halved"></i> Transparência e Regularidade</h3>
+                <p style="font-size: 0.95rem; color: #4b5563; margin-bottom: 1rem;">
+                    A <strong>Planeta Comércio, Importação e Exportação LTDA</strong> opera sob o regime geral de tributação, plenamente adequada às exigências do comércio exterior brasileiro.
+                </p>
+                <table class="info-table" style="font-size: 0.85rem;">
+                    <tr>
+                        <td>Enquadramento:</td>
+                        <td>Sem Enquadramento de ME/EPP</td>
+                    </tr>
+                    <tr>
+                        <td>Optante Simples:</td>
+                        <td>Não</td>
+                    </tr>
+                    <tr>
+                        <td>Optante MEI:</td>
+                        <td>Não</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="max-width: 1200px; margin: 0 auto;">
+            <p>&copy; 2026 Braswu - Planeta Comercio, Importacao e Exportacao LTDA. Todos os direitos reservados.</p>
+            <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.5rem;">CNPJ: 01.882.767/0003-16 | Inscrição Estadual: 143.971.268.110</p>
+        </div>
+    </footer>
+
+</body>
+</html>
